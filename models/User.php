@@ -13,9 +13,6 @@ use yii\web\IdentityInterface;
  * @property integer $id
  * @property string $username
  * @property string $auth_key
- * @property string $password_hash
- * @property string $password_reset_token
- * @property string $email
  * @property integer $created_at
  * @property integer $updated_at
  * @property string $first_name
@@ -73,10 +70,9 @@ class User extends ActiveRecord implements IdentityInterface
         return [
             [['username', 'auth_key'], 'required'],
             [['created_at', 'updated_at'], 'integer'],
-            [['username', 'password_hash', 'password_reset_token', 'email', 'first_name', 'last_name'], 'string', 'max' => 255],
+            [['username', 'first_name', 'last_name'], 'string', 'max' => 255],
             [['auth_key'], 'string', 'max' => 32],
             [['username'], 'unique'],
-            [['password_reset_token'], 'unique'],
         ];
     }
 
@@ -91,7 +87,6 @@ class User extends ActiveRecord implements IdentityInterface
             'id' => Yii::t('app', 'ID'),
             'username' => Yii::t('app', 'Username'),
             'auth_key' => Yii::t('app', 'Auth Key'),
-            'email' => Yii::t('app', 'Email'),
             'created_at' => Yii::t('app', 'Created At'),
             'updated_at' => Yii::t('app', 'Updated At'),
             'first_name' => Yii::t('app', 'First Name'),
