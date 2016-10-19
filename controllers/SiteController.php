@@ -113,7 +113,6 @@ class SiteController extends MainController
         $userIdenty = $user->findIdentityByAccessToken($key);
 
         if(Yii::$app->user->login($userIdenty)){
-            $userIdenty->
             $this->goHome();
         }
     }
